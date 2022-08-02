@@ -319,3 +319,69 @@
 //     starterIndex: 2,
 // });
 
+// const arr = [3, 4, 5];
+// const arrNew = [1,2,...arr]
+// console.log(arrNew);
+// console.log(...arrNew);
+// console.log(...'test');
+// const restaurant = {
+//     name: "Classico Italiano",
+//     location: "Via angelo Tavanti 23, Firenze Italy",
+//     categories: ["Italian", "Pizzeria", "Vegetarian", "Organic"],
+//     starterMenu: ["Focaccia", "Bruschetta", "Garlic bread", "Caprese salad"],
+//     mainMenu: ["Pizza", "Pasta", "Risotto"],
+
+//     openingHours: {
+//         thu: {
+//             open: 12,
+//             close: 22,
+//         },
+//         fri: {
+//             open: 11,
+//             close: 22,
+//         },
+//         sat: {
+//             open: 0,
+//             close: 24,
+//         },
+//     },
+
+//     order: function (starterIndex, mainIndex) {
+//         return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+//     },
+
+//     orderDelivery: function ({
+//         starterIndex = 1,
+//         mainIndex = 0,
+//         time = "20:00",
+//         address,
+//     }) {
+//         console.log(
+//             `order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
+//         );
+//     },
+
+//     orderPasta: function (ing1 = null, ing2 = null, ing3 = null) {
+//         console.log(
+//             `Here is your delicious pasta with ${ing1}, ${ing2}, ${ing3}!`
+//         );
+//     },
+// };
+// const newMenu = [...restaurant.mainMenu , 'Gnocci']
+// console.log(newMenu);
+//****** Merge two array together ******//
+// const menu = [...restaurant.mainMenu , ...restaurant.starterMenu];
+// console.log(menu);
+// const firstStr = 'Hello'
+// const secondStr = 'World'
+// const wholeStr = [...firstStr,' ',...secondStr]
+// console.log(... wholeStr);
+//
+// const ingredients = ["a", "b", "c"];
+// restaurant.orderPasta(...ingredients);
+// console.log(ingredients);
+// console.log(restaurant);
+// const newRestaurant = { ...restaurant, founder: "Guiseppe" };
+// newRestaurant.orderPasta(...ingredients);
+// console.log(newRestaurant.founder);
+// console.log(newRestaurant);
