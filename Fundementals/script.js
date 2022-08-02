@@ -1,4 +1,4 @@
-// 'use strict';
+"use strict";
 
 // function fruitProcessor(apples, oranges) {
 //     const juice = `juice with ${apples} apples and ${oranges} oranges!`;
@@ -203,10 +203,119 @@
 // }
 // console.log(jamArray)
 
-
 // let dice = Math.floor(Math.random() * 6) + 1
 // while (dice !== 6) {
 //     console.log(dice)
 //     dice = Math.floor(Math.random() * 6) + 1
 // }
+
+// const restaurant = {
+//     name: "Classico Italiano",
+//     location: "Via angelo Tavanti 23, Firenze Italy",
+//     categories: ["Italian", "Pizzeria", "Vegetarian", "Organic"],
+//     starterMenu: ["Focaccia", "Bruschetta", "Garlic bread", "Caprese salad"],
+//     mainMenu: ["Pizza", "Pasta", "Risotto"],
+//
+//     order: function (starterIndex, mainIndex) {
+//         return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+//     },
+// };
+//
+// const arr = [2,3,4]
+// const [a,b,c] = arr
+// console.log(b);
+//
+// let [first, , second] = restaurant.mainMenu;
+// console.log(first, second);
+// [first, second] = [second, first];
+// console.log(first, second);
+//
+// const [starter, main] = restaurant.order(2, 0);
+// console.log(starter);
+// console.log(main);
+//
+// const nested = [2 ,4 , [5 , 6]]
+// const [first , , [second , third]] = nested
+// console.log(first , second , third);
+//
+// const [p = 0, q = 0, r = 0] = [8];
+// console.log(p, q, r);
+
+// const restaurant = {
+//     name: "Classico Italiano",
+//     location: "Via angelo Tavanti 23, Firenze Italy",
+//     categories: ["Italian", "Pizzeria", "Vegetarian", "Organic"],
+//     starterMenu: ["Focaccia", "Bruschetta", "Garlic bread", "Caprese salad"],
+//     mainMenu: ["Pizza", "Pasta", "Risotto"],
+//
+//     openingHours: {
+//         thu: {
+//             open: 12,
+//             close: 22,
+//         },
+//         fri: {
+//             open: 11,
+//             close: 22,
+//         },
+//         sat: {
+//             open: 0,
+//             close: 24,
+//         },
+//     },
+//
+//     order: function (starterIndex, mainIndex) {
+//         return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+//     },
+//
+//     orderDelivery: function ({
+//         starterIndex = 1,
+//         mainIndex = 0,
+//         time = "20:00",
+//         address,
+//     }) {
+//         console.log(
+//             `order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
+//         );
+//     },
+// };
+//
+// const {name , openinghours , categories} = restaurant
+// console.log(name , openinghours , categories);
+//
+// const {name: restaurantsName , openinghours: hours , categories: tags} = restaurant
+// console.log(restaurantsName , hours , tags);
+//
+// const {menu = [] , starterMenu: starters = [] } = restaurant
+// console.log(menu , starters);
+//
+// let a = 111;
+// let b = 999;
+// const obj = { a: 23, b: 7, c: 14 };
+// ({ a, b } = obj);
+//
+// console.log(a, b);
+//
+// const {fri: {open , close}} = openinghours
+// console.log(open , close);
+//
+// const {
+//     openingHours: {
+//         fri: { open : oh, close: ch },
+//     },
+// } = restaurant;
+// console.log(openingHours); ~~> not declaring a variable , just addresing
+// console.log(fri);          ~~> not declaring a variable , just addresing
+// console.log(oh);
+// console.log(ch);
+//
+// restaurant.orderDelivery({
+//     time: "22:30",
+//     address: "tehran",
+//     mainIndex: 2,
+//     starterIndex: 2,
+// });
+// restaurant.orderDelivery({
+//     address: "tehran",
+//     starterIndex: 2,
+// });
 
