@@ -485,11 +485,11 @@ const restaurant = {
         },
     },
 
-    order: function (starterIndex, mainIndex) {
+    order(starterIndex, mainIndex) {
         return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
     },
 
-    orderDelivery: function ({
+    orderDelivery({
         starterIndex = 1,
         mainIndex = 0,
         time = "20:00",
@@ -500,7 +500,7 @@ const restaurant = {
         );
     },
 
-    orderPasta: function (ing1 = null, ing2 = null, ing3 = null) {
+    orderPasta(ing1 = null, ing2 = null, ing3 = null) {
         console.log(
             `Here is your delicious pasta with ${ing1}, ${ing2} and ${ing3}!`
         );
@@ -534,3 +534,12 @@ const restaurant = {
 // rest2.owner &&= '<ANONYMOUS>'
 // console.log(rest2.owner);
 // console.log(rest2);
+
+// const menu = [...restaurant.mainMenu, ...restaurant.starterMenu];
+// for(const item of menu) console.log(item);
+// for(const item of menu.entries()) {
+//     console.log(`${item[0] + 1}: ${item[1]}`);
+// }
+// for (const [i, el] of menu.entries()) {
+//     console.log(`${i + 1}: ${el}`);
+// }
