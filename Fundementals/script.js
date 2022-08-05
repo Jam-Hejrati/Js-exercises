@@ -330,6 +330,82 @@
 //     categories: ["Italian", "Pizzeria", "Vegetarian", "Organic"],
 //     starterMenu: ["Focaccia", "Bruschetta", "Garlic bread", "Caprese salad"],
 //     mainMenu: ["Pizza", "Pasta", "Risotto"],
+//
+//     openingHours: {
+//         thu: {
+//             open: 12,
+//             close: 22,
+//         },
+//         fri: {
+//             open: 11,
+//             close: 22,
+//         },
+//         sat: {
+//             open: 0,
+//             close: 24,
+//         },
+//     },
+//
+//     order: function (starterIndex, mainIndex) {
+//         return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+//     },
+//
+//     orderDelivery: function ({
+//         starterIndex = 1,
+//         mainIndex = 0,
+//         time = "20:00",
+//         address,
+//     }) {
+//         console.log(
+//             `order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
+//         );
+//     },
+//
+//     orderPasta: function (ing1 = null, ing2 = null, ing3 = null) {
+//         console.log(
+//             `Here is your delicious pasta with ${ing1}, ${ing2}, ${ing3}!`
+//         );
+//     },
+// };
+// const newMenu = [...restaurant.mainMenu , 'Gnocci']
+// console.log(newMenu);
+//****** Merge two array together ******//
+// const menu = [...restaurant.mainMenu , ...restaurant.starterMenu];
+// console.log(menu);
+// const firstStr = 'Hello'
+// const secondStr = 'World'
+// const wholeStr = [...firstStr,' ',...secondStr]
+// console.log(... wholeStr);
+//
+// const ingredients = ["a", "b", "c"];
+// restaurant.orderPasta(...ingredients);
+// console.log(ingredients);
+// console.log(restaurant);
+// const newRestaurant = { ...restaurant, founder: "Guiseppe" };
+// newRestaurant.orderPasta(...ingredients);
+// console.log(newRestaurant.founder);
+// console.log(newRestaurant);
+
+// const arr = [1, 2, ...[3, 4]];
+// console.log(arr);
+//
+// const [a,b,...others] = [1,2,3,4,5,6]
+// console.log(others);
+/* CHECK FOR REST SHALLOW COPY */
+// let arr1 = [1,2,[3,4]]
+// const [a,...others] = arr1
+// console.log('arr1: ' , arr1);
+// console.log('others: ' , others);
+// arr1[1] = 99
+// arr1[2][0] = 1111
+// console.log('arr1: ' , arr1);
+// console.log('others: ' , others);
+// const restaurant = {
+//     name: "Classico Italiano",
+//     location: "Via angelo Tavanti 23, Firenze Italy",
+//     categories: ["Italian", "Pizzeria", "Vegetarian", "Organic"],
+//     starterMenu: ["Focaccia", "Bruschetta", "Garlic bread", "Caprese salad"],
+//     mainMenu: ["Pizza", "Pasta", "Risotto"],
 
 //     openingHours: {
 //         thu: {
@@ -367,21 +443,87 @@
 //         );
 //     },
 // };
-// const newMenu = [...restaurant.mainMenu , 'Gnocci']
-// console.log(newMenu);
-//****** Merge two array together ******//
-// const menu = [...restaurant.mainMenu , ...restaurant.starterMenu];
-// console.log(menu);
-// const firstStr = 'Hello'
-// const secondStr = 'World'
-// const wholeStr = [...firstStr,' ',...secondStr]
-// console.log(... wholeStr);
-//
-// const ingredients = ["a", "b", "c"];
-// restaurant.orderPasta(...ingredients);
-// console.log(ingredients);
-// console.log(restaurant);
-// const newRestaurant = { ...restaurant, founder: "Guiseppe" };
-// newRestaurant.orderPasta(...ingredients);
-// console.log(newRestaurant.founder);
-// console.log(newRestaurant);
+// const [pizza , pasta , ...others] = [...restaurant.mainMenu , ...restaurant.starterMenu]
+// console.log(pizza);
+// console.log(pasta);
+// console.log(...others);
+// const {sat , ...others} = restaurant.openingHours
+// console.table(sat);
+// console.table(others);
+// const sum = (...numbers) => {
+//     let sumNum = 0;
+//     for (let i = 0; i < numbers.length; i++) {
+//         sumNum += numbers[i];
+//     }
+//     return sumNum;
+// };
+// console.log(sum(1, 2, 3, 4));
+// console.log(sum(1, 2));
+// console.log(sum(1, 2,3245,1,235,3));
+// const x = [3,5,5,3,6,5,3]
+// console.log(sum(...x));
+
+const restaurant = {
+    name: "Classico Italiano",
+    location: "Via angelo Tavanti 23, Firenze Italy",
+    categories: ["Italian", "Pizzeria", "Vegetarian", "Organic"],
+    starterMenu: ["Focaccia", "Bruschetta", "Garlic bread", "Caprese salad"],
+    mainMenu: ["Pizza", "Pasta", "Risotto"],
+
+    openingHours: {
+        thu: {
+            open: 12,
+            close: 22,
+        },
+        fri: {
+            open: 11,
+            close: 22,
+        },
+        sat: {
+            open: 0,
+            close: 24,
+        },
+    },
+
+    order: function (starterIndex, mainIndex) {
+        return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+    },
+
+    orderDelivery: function ({
+        starterIndex = 1,
+        mainIndex = 0,
+        time = "20:00",
+        address,
+    }) {
+        console.log(
+            `order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
+        );
+    },
+
+    orderPasta: function (ing1 = null, ing2 = null, ing3 = null) {
+        console.log(
+            `Here is your delicious pasta with ${ing1}, ${ing2} and ${ing3}!`
+        );
+    },
+};
+// restaurant.orderPasta &&
+//     restaurant.orderPasta(...["mushroom", "cream", "salt"]);
+// restaurant.numGuests = 0
+// const guests = restaurant.numGuests ?? 10
+// // const guests = restaurant.numGuests || 10
+// console.log(guests);
+const rest1 = {
+    name: "Capri",
+    numGuests: 20,
+};
+const rest2 = {
+    name: "La piazza",
+    owner: "Giovanni Rossi",
+};
+// rest1.numGuests = rest1.numGuests || 10; // ~~> rest1.numGuests ||= 10
+// rest2.numGuests = rest2.numGuests || 10; // ~~> rest2.numGuests ||= 10
+// console.log(rest2.numGuests , rest1.numGuests);
+rest1.numGuests ||= 10
+rest2.numGuests ||= 10
+console.table(rest1);
+console.table(rest2);
