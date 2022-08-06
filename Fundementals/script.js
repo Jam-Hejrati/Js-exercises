@@ -39,30 +39,28 @@ const restaurant = {
     },
 };
 
-const orderSet = new Set([
-    "pasta",
-    "pizza",
-    "pizza",
-    "risotto",
-    "pasta",
-    "pizza",
-]);
-console.log(...orderSet);
-console.log(orderSet.size);
-console.log(orderSet.has('pizza')); //true
-console.log(orderSet.has('bread')); //false
-orderSet.add('bread')
-orderSet.add('bread')
-console.log(...orderSet);
-orderSet.delete('risotto')
-console.log(...orderSet);
-orderSet.clear()
-console.log(orderSet);
-console.log(new Set('this is a test'));
-console.log(new Set('this is a test').size);
-const staff1 = ["waiter", "chef", "waiter", "manager", "chef", "waiter"];
-const staff2 = ["cleaner", "masterChef", "waiter", "manager", "chef", "waiter"];
-const staffVary = new Set([...new Set(staff1) , ...new Set(staff2)])
-console.log(staff1);
-console.log(staff2);
-console.log(staffVary);
+const rest = new Map();
+rest.set("name", "classico italiano");
+rest.set(1, "Firenze");
+rest.set(2, "Lisbon");
+rest.set("categories", ["Italian", "Pizzeria", "Vegetarian", "Organic"])
+    .set("open", 11)
+    .set("close", 23)
+    .set(true, "we are open")
+    .set(false, "we are closed");
+
+console.log(rest.get(true));
+console.log(rest.get("name"));
+
+const time = 21;
+console.log(rest.get(time > rest.get("open") && time < rest.get("close")));
+
+console.log(rest.has(2));
+
+rest.delete(2)
+console.table(rest);
+
+console.log(rest.size);
+
+rest.clear()
+console.log(rest.size);
