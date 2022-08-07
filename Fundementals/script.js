@@ -39,28 +39,14 @@ const restaurant = {
     },
 };
 
-const rest = new Map();
-rest.set("name", "classico italiano");
-rest.set(1, "Firenze");
-rest.set(2, "Lisbon");
-rest.set("categories", ["Italian", "Pizzeria", "Vegetarian", "Organic"])
-    .set("open", 11)
-    .set("close", 23)
-    .set(true, "we are open")
-    .set(false, "we are closed");
+const setToMap = (map , key , value) => map.set(key , value)
+const getFromMap = (map , key) => map.get(key)
 
-console.log(rest.get(true));
-console.log(rest.get("name"));
-
-const time = 21;
-console.log(rest.get(time > rest.get("open") && time < rest.get("close")));
-
-console.log(rest.has(2));
-
-rest.delete(2)
-console.table(rest);
-
-console.log(rest.size);
-
-rest.clear()
-console.log(rest.size);
+const rest = new Map([
+    [1 , 'this is the first value'],
+    ['yoo ha ha ha' , true],
+    [false , 45],
+    ['test' , 'ok'] 
+])
+console.log(getFromMap(rest , 1));
+console.log(rest);
