@@ -1,17 +1,32 @@
 'use strict';
 
-const bookingArr = []
-
-const createBooking = function (flightNum, numPassengers = 1, price = 199 * numPassengers) {
-    const booking = {
-        flightNum,
-        numPassengers,
-        price,
-    }
-    console.table(booking)
-    bookingArr.push(booking)
+const flight = 'AE234'
+const jam = {
+    name: 'Jam Hejrati',
+    passport: 23436343534,
 }
 
-createBooking('LH123')
-createBooking('LH123', undefined, 456) // undefined in argument ~> will return default value in functions parameter
-createBooking('CxR19', 5)
+const checkIn = function (flightNum, passenger) {
+    flightNum = 'LH999'
+    passenger.name = 'Mr. ' + passenger.name
+
+    if (passenger.passport === 23436343534) {
+        console.log('checked in')
+    } else {
+        console.log('Wrong passport!')
+    }
+}
+
+checkIn(flight, jam);
+console.log(flight)
+console.table(jam)
+
+const newPassport = function(person){
+    return person.passport = Math.trunc(Math.random()*1000000000)
+}
+
+console.log(newPassport(jam))
+checkIn(flight , jam)
+
+
+
