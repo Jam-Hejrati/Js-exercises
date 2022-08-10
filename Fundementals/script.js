@@ -1,32 +1,22 @@
 'use strict';
 
-const flight = 'AE234'
-const jam = {
-    name: 'Jam Hejrati',
-    passport: 23436343534,
+const oneWord = function (str) {
+    return str.replace(/ /g, '').toLowerCase()
 }
 
-const checkIn = function (flightNum, passenger) {
-    flightNum = 'LH999'
-    passenger.name = 'Mr. ' + passenger.name
-
-    if (passenger.passport === 23436343534) {
-        console.log('checked in')
-    } else {
-        console.log('Wrong passport!')
-    }
+const upperFirstWord = function (str) {
+    const [first, ...others] = str.split(' ');
+    return [first.toUpperCase(), ...others].join(' ')
 }
 
-checkIn(flight, jam);
-console.log(flight)
-console.table(jam)
+//Higher-Order function
+const transformer = function (str, fn) {
+    console.log(`Original string: ${str}`)
+    console.log(`Transformed string: ${fn(str)}`);
 
-const newPassport = function(person){
-    return person.passport = Math.trunc(Math.random()*1000000000)
+    console.log(`Transformed by: ${fn.name}`)
 }
 
-console.log(newPassport(jam))
-checkIn(flight , jam)
-
-
-
+transformer('JavaScript is the best!', upperFirstWord /*this is Call-Back function here*/);
+console.log('-----------------------')
+transformer('JavaScript is the best!', oneWord);
