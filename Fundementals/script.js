@@ -1,22 +1,18 @@
 'use strict';
 
-const oneWord = function (str) {
-    return str.replace(/ /g, '').toLowerCase()
+const greet = function (greeting) {
+    return function (name) {
+        console.log(`${greeting} ${name}`)
+    }
 }
 
-const upperFirstWord = function (str) {
-    const [first, ...others] = str.split(' ');
-    return [first.toUpperCase(), ...others].join(' ')
-}
+const greeterHey = greet('Hey')
+greeterHey('Jonas')
+greeterHey('Jam')
+const greeterWelcome = greet('Welcome')
+greeterWelcome('Ali ')
+/* Or ~~> */
+greet('Welcome')('Ali')
 
-//Higher-Order function
-const transformer = function (str, fn) {
-    console.log(`Original string: ${str}`)
-    console.log(`Transformed string: ${fn(str)}`);
-
-    console.log(`Transformed by: ${fn.name}`)
-}
-
-transformer('JavaScript is the best!', upperFirstWord /*this is Call-Back function here*/);
-console.log('-----------------------')
-transformer('JavaScript is the best!', oneWord);
+const greetArrow = greeting => name => console.log(`${greeting} ${name}`)
+greetArrow('Hello')('Jam')
