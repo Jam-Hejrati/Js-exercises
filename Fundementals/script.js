@@ -88,3 +88,4 @@ const addTaxRAte = function(rate){
 }
 const addVAT2 = addTaxRAte(0.23)
 console.log(addVAT2(100))
+//test
