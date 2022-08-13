@@ -1,10 +1,15 @@
-'use strict';
+'use strict'
 
+const secureBooking = function(){
+    let passengerCount = 0
 
-//IIFE
-(function () {
-    console.log("this will never run again")
-    const isPrivate = 23
-})();
+    return function() {
+        passengerCount++
+        console.log(`${passengerCount} passengers`)
+    }
+}
 
-(() => console.log('this will ALSO never run again'))()
+const booker = secureBooking();
+booker() // passengerCount = 1
+booker() // passengerCount = 2
+booker() // passengerCount = 3
