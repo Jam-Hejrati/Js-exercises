@@ -75,9 +75,41 @@
 
 // /////////////////////////////////////////////////
 
-/* at() method in EcmaScript 2022 */
-const arr = [23 , 11 , 64]
-console.log(arr.at(-1))
-console.log(...arr.slice(-1)) // Or console.log(arr.slice(-1)[0])
-console.log(arr[arr.length - 1])
-console.log('Jam Hejrati'.at(-1)) // Also works on strings
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+// for (const movement of movements) {
+//   if (movement > 0) {
+//     console.log(`You deposited ${movement}`);
+//   } else {
+//     console.log(`You withdres ${Math.abs(movement)}`);
+//   }
+// }
+
+/*******  for having the index of each item in (for of) loop : *******/
+// for (const [index , movement] of movements.entries()) {
+//   if (movement > 0) {
+//     console.log(`${index + 1}. You deposited ${movement}`);
+//   } else {
+//     console.log(`${index + 1}. You withdres ${Math.abs(movement)}`);
+//   }
+// }
+
+// movements.forEach(function (movement) {
+//   if (movement > 0) {
+//     console.log(`You deposited ${movement}`);
+//   } else {
+//     console.log(`You withdres ${Math.abs(movement)}`);
+//   }
+// });
+
+/*******  for having the index of each item in (forEach) loop : *******/
+/* The layout should be the (elements var name , index , array) */
+movements.forEach(function (movement, i, arr) {
+  if (movement > 0) {
+    console.log(`${i + 1}. You deposited ${movement}`);
+  } else {
+    console.log(`${i + 1}. You withdres ${Math.abs(movement)}`);
+  }
+});
+
+/* IMPORTANT: break & continue keywords are not work in forEach loop */
