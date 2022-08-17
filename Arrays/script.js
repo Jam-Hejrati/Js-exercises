@@ -1,4 +1,4 @@
-"use strict";
+/*"use strict";
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -113,3 +113,22 @@ const currencies = new Map([
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
+*/
+
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+// Maximum value with Reduce()
+const maximumMove = movements.reduce((acc, mov) => {
+  if (acc > mov) {
+    console.log(`acc) ${acc}`);
+    console.log(`mov) ${mov}`);
+    return acc; //return is for acc value
+  } else {
+    console.log(`acc) ${acc}`);
+    console.log(`mov) ${mov}`);
+    return mov; //return is for acc value
+  }
+}, movements[0]);
+/* The expression as long as the array length will be iterate and (AT THE END), the variable will be declare by the last value of iteration */
+
+console.log(maximumMove);
