@@ -1,4 +1,4 @@
-/*"use strict";
+"use strict";
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -80,6 +80,14 @@ const displayMovements = function (movements) {
 };
 displayMovements(account1.movements);
 
+// set the sum of movements visually on Top
+const calcDisplayBalance = (movements) => {
+  const balance = movements.reduce((acc, mov) => acc + mov, 0);
+  labelBalance.textContent = `${balance} EUR`;
+};
+calcDisplayBalance(account1.movements);
+
+// make abbreviation of owners Full name
 const createUsernames = (accs) => {
   accs.forEach(
     (acc) =>
@@ -105,15 +113,3 @@ const currencies = new Map([
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
-*/
-
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
-console.log(movements);
-
-//accumulator >=> snowball
-const balance = movements.reduce(
-  (accumulator, current, index, arr) => accumulator + current,
-  100 //this second argument of reduce() is the initial value of accumulator
-); 
-
-console.log(balance);
