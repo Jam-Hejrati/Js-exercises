@@ -1,5 +1,5 @@
-/*"use strict";
-
+"use strict";
+/*
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // BANKIST APP
@@ -115,20 +115,22 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 /////////////////////////////////////////////////
 */
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const calcAverageHumanAge = ages => {
+//     const dogToHuman = ages.map(age => age > 2 ? 16 + (age * 4) : 2 * age)
+//     const adultDogs = dogToHuman.filter(dog => dog < 18)
+//     const sumAdultAges = adultDogs.reduce((acc, age) => acc + age) / ages.length
+//     return sumAdultAges
+// }
 
-// Maximum value with Reduce()
-const maximumMove = movements.reduce((acc, mov) => {
-  if (acc > mov) {
-    console.log(`acc) ${acc}`);
-    console.log(`mov) ${mov}`);
-    return acc; //return is for acc value
-  } else {
-    console.log(`acc) ${acc}`);
-    console.log(`mov) ${mov}`);
-    return mov; //return is for acc value
-  }
-}, movements[0]);
-/* The expression as long as the array length will be iterate and (AT THE END), the variable will be declare by the last value of iteration */
+const calcAverageHumanAge = (ages) =>
+  ages
+    .map((age) => (age <= 2 ? 2 * age : 16 + age * 4))
+    .filter((age) => age >= 18)
+    .reduce((acc, age, i, arr) => acc + age / arr.length, 0);
+// {const humanAge = ages.map((age) => (age <= 2 ? 2 * age : 16 + age * 4));
+// const adults = humanAge.filter((dog) => dog >= 18);
+// const average = adults.reduce((acc, age) => acc + age, 0) / adults.length;
+// return average;}
 
-console.log(maximumMove);
+console.log(calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]));
+console.log(calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]));
