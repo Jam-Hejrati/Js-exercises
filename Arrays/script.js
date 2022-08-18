@@ -135,11 +135,15 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
 
-const eurToUsd = 1.1;
 
-// PIPELINE (a little hard to debug if something went wrong, beacause of the complex chain)
-const totalDepositsUSD = movements
-  .filter((mov) => mov > 0)
-  .map((mov) => mov * eurToUsd)
-  .reduce((acc, mov) => acc + mov, 0);
-console.log(totalDepositsUSD);
+// does'nt return new array
+// accept a callback funtion as a condition
+// will returns the FIRST item of array that satisfies the condition
+const firtsWithdrawal = movements.find(mov => mov < 0)
+console.log(firtsWithdrawal);
+console.log(movements);
+
+// another example
+console.table(accounts);
+const account = accounts.find(acc => acc.owner === 'Jessica Davis')
+console.log(account);
