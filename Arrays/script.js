@@ -1,5 +1,5 @@
 "use strict";
-/*
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // BANKIST APP
@@ -71,7 +71,7 @@ const displayMovements = function (movements) {
                   <div class="movements__type movements__type--${type}">${
       index + 1
     } ${type}</div>
-                  <div class="movements__value">${mov}</div>
+                  <div class="movements__value">${mov}€</div>
             </div>
             `;
 
@@ -83,9 +83,30 @@ displayMovements(account1.movements);
 // set the sum of movements visually on Top
 const calcDisplayBalance = (movements) => {
   const balance = movements.reduce((acc, mov) => acc + mov, 0);
-  labelBalance.textContent = `${balance} EUR`;
+  labelBalance.textContent = `${balance}€`;
 };
 calcDisplayBalance(account1.movements);
+
+// set the Sum of deposit, withdrawal & interest values visually
+const calcDisplaySummary = (movements) => {
+  const incomes = movements
+    .filter((mov) => mov > 0)
+    .reduce((acc, mov) => acc + mov, 0);
+  labelSumIn.textContent = `${incomes}€`;
+
+  const out = movements
+    .filter((mov) => mov < 0)
+    .reduce((acc, mov) => acc + mov, 0);
+  labelSumOut.textContent = `${Math.abs(out)}€`;
+
+  const interest = movements
+    .filter((mov) => mov > 0)
+    .map((deposit) => (deposit * 1.2) / 100)
+    .filter((interest, i, arr) => interest >= 1)
+    .reduce((acc, interest) => acc + interest, 0);
+  labelSumInterest.textContent = `${interest}€`;
+};
+calcDisplaySummary(account1.movements);
 
 // make abbreviation of owners Full name
 const createUsernames = (accs) => {
@@ -113,24 +134,12 @@ const currencies = new Map([
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
-*/
 
-// const calcAverageHumanAge = ages => {
-//     const dogToHuman = ages.map(age => age > 2 ? 16 + (age * 4) : 2 * age)
-//     const adultDogs = dogToHuman.filter(dog => dog < 18)
-//     const sumAdultAges = adultDogs.reduce((acc, age) => acc + age) / ages.length
-//     return sumAdultAges
-// }
+const eurToUsd = 1.1;
 
-const calcAverageHumanAge = (ages) =>
-  ages
-    .map((age) => (age <= 2 ? 2 * age : 16 + age * 4))
-    .filter((age) => age >= 18)
-    .reduce((acc, age, i, arr) => acc + age / arr.length, 0);
-// {const humanAge = ages.map((age) => (age <= 2 ? 2 * age : 16 + age * 4));
-// const adults = humanAge.filter((dog) => dog >= 18);
-// const average = adults.reduce((acc, age) => acc + age, 0) / adults.length;
-// return average;}
-
-console.log(calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]));
-console.log(calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]));
+// PIPELINE (a little hard to debug if something went wrong, beacause of the complex chain)
+const totalDepositsUSD = movements
+  .filter((mov) => mov > 0)
+  .map((mov) => mov * eurToUsd)
+  .reduce((acc, mov) => acc + mov, 0);
+console.log(totalDepositsUSD);
