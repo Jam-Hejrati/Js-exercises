@@ -194,12 +194,19 @@ btnClose.addEventListener('click', e => {
 /////////////////////////////////////////////////
 // LECTURES
 
-/*const currencies = new Map([
+const currencies = new Map([
   ["USD", "United States dollar"],
   ["EUR", "Euro"],
   ["GBP", "Pound sterling"],
 ]);
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];*/
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
+
+console.log(movements.includes(-130))
+console.log(movements.some(mov => mov === -130))
+
+const anyDeposits = movements.some(mov => mov > 5000) // same as: Is there any mov that is greater than 5000? false
+console.log(anyDeposits)
+
