@@ -128,6 +128,7 @@ const updateUI = function (acc) {
     // Display summary
     calcDisplaySummary(acc);
 }; // Just to make it globally
+
 // Event handler
 let currentAccount;
 btnLogin.addEventListener("click", (e) => {
@@ -137,7 +138,6 @@ btnLogin.addEventListener("click", (e) => {
     currentAccount = accounts.find(
         (acc) => acc.username === inputLoginUsername.value
     );
-    console.log(currentAccount);
 
     if (currentAccount?.pin === +inputLoginPin.value) {
         // Display UI and message
@@ -173,6 +173,21 @@ btnTransfer.addEventListener('click', e => {
         // Update UI
         updateUI(currentAccount)
     }
+})
+
+btnClose.addEventListener('click', e => {
+    e.preventDefault();
+
+    if (inputCloseUsername.value === currentAccount.username && +inputClosePin.value === currentAccount.pin) {
+        const index = accounts.findIndex(acc => acc.username === currentAccount.username)
+
+        // Delete account
+        accounts.splice(index, 1)
+
+        // hide UI
+        containerApp.style.opacity = 0
+    }
+    inputCloseUsername.value = inputClosePin.value = ''
 })
 
 /////////////////////////////////////////////////
