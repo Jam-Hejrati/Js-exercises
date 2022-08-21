@@ -62,9 +62,12 @@ const inputCloseUsername = document.querySelector(".form__input--user");
 const inputClosePin = document.querySelector(".form__input--pin");
 
 // set data visually in the movement box
-const displayMovements = function (movements) {
+const displayMovements = function (movements, sort = false) {
   containerMovements.innerHTML = "";
-  movements.forEach(function (mov, index) {
+
+  const movs = sort ? movements.slice().sort((a, b) => a - b) : movements; // First a shallow copy with slice() then sort()
+
+  movs.forEach(function (mov, index) {
     const type = mov > 0 ? "deposit" : "withdrawal";
     const html = `
             <div class="movements__row">
@@ -216,6 +219,13 @@ btnClose.addEventListener("click", (e) => {
   inputCloseUsername.value = inputClosePin.value = "";
 });
 
+let sorted = false;
+btnSort.addEventListener("click", (e) => {
+  e.preventDefault();
+  displayMovements(currentAccount.movements, !sorted);
+  sorted = !sorted;
+});
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -229,30 +239,3 @@ const currencies = new Map([
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
-
-const owners = ["Jonas", "Zach", "Adam", "Martha"];
-console.log(owners.sort());
-console.log(owners);
-
-/* For numbers If a callback func in sort() method returns: */
-// return < 0 => A ,B (keep order)
-// return > 0 => B ,A (switch order)
-console.log(movements);
-/*movements.sort((a,b)=> {
-    if(a > b) return 1
-    if( b > a) return -1
-})*/
-
-// Ascending
-movements.sort((a, b) => (a > b ? 1 : -1));
-console.log(movements);
-// Descending
-movements.sort((a, b) => (a < b ? 1 : -1));
-console.log(movements);
-
-// Ascending
-movements.sort((a, b) => a - b);
-console.log(movements);
-// Descending
-movements.sort((a, b) => b - a);
-console.log(movements);
