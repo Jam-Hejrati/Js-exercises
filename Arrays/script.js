@@ -239,3 +239,37 @@ const currencies = new Map([
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
+
+const arr = [1, 2, 3, 4, 5, 6, 7];
+const x = new Array(7); // Length will be 7 with 7 empty element
+console.log(x);
+
+x.fill(1, 3, 5); // .fill(element , start , end)
+x.fill(1); //[1, 1, 1, 1, 1, 1, 1]
+console.log(x);
+
+arr.fill(23, 4, 6); // [1, 2, 3, 4, 23, 23, 7]
+console.log(arr);
+
+// Array.from
+const y = Array.from({ length: 7 }, () => 1);
+console.log(y);
+
+const z = Array.from({ length: 7 }, (current, index) => index + 1);
+console.log(z);
+
+// An array of random dice rolls with length = 10
+const randomDiceRolls = Array.from(
+  { length: 10 },
+  () => Math.trunc(Math.random() * 6) + 1
+);
+console.log(randomDiceRolls);
+
+labelBalance.addEventListener("click", () => {
+  const movementsUI = Array.from(
+    document.querySelectorAll(".movements__value"),
+    (el) => +el.textContent.replace("€", "")
+  );
+
+  console.log(movementsUI);
+});
