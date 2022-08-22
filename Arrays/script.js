@@ -242,23 +242,4 @@ btnSort.addEventListener("click", (e) => {
 /////////////////////////////////////////////////
 // LECTURE
 
-console.log(2 ** 53 - 1);
-console.log(Number.MAX_SAFE_INTEGER);
-console.log(2 ** 53 + 1); // 9007199254740992  :|
-console.log(2 ** 53 + 0); // 9007199254740992  :|||
-
-console.log(587425848438736873687387368736836873687368736n);
-console.log(typeof 587425848438736873687387368736836873687368736n);
-console.log(BigInt(34465455634786488356725));
-// we can not use operators between a BigInt and another type like a Number
-const huge = 6732478598347569827356987n
-const num = 23
-// console.log(huge * num); //Error
-console.log(huge * BigInt(num));
-
-console.log(15n > 15); //false
-console.log(15n == 15); //true
-console.log(15n === 15); //false
-
-console.log(10n / 3n);
-console.log(10 / 3);
+//test
