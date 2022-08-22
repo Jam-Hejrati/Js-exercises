@@ -242,25 +242,36 @@ btnSort.addEventListener("click", (e) => {
 /////////////////////////////////////////////////
 // LECTURE
 
-console.log(23 === 23.0);
-console.log(0.1 + 0.2);
-console.log(Number.parseInt("30px", 10)); // 30
-console.log(Number.parseInt("e23", 10)); // NaN
-console.log(Number.parseInt("  2.5rem  "));
-console.log(Number.parseFloat("   2.5rem"));
+console.log(Math.sqrt(25));
+console.log(25 ** (1 / 2));
+console.log(8 ** (1 / 3));
 
-// Just for cheking if a value is NaN
-console.log(Number.isNaN(20)); //false
-console.log(Number.isNaN("20")); //flase
-console.log(Number.isNaN(+"20X")); //true
-console.log(Number.isNaN(23 / 0)); //flase!!
+console.log(Math.max(5, 8, 23, 11, 2));
+const numbers = [2, 34, 78, 2, 6, 3, 16, -5, 1, 7, 89, 43];
+console.log(Math.max(...numbers)); // find the maximum value in Array
+console.log(Math.min(...numbers)); // find the minimum value in Array
 
-// It's better to use this method ~> isFinite() to figurout something is a number or not
-console.log(Number.isFinite(20)); //true
-console.log(Number.isFinite("20")); //false
-console.log(Number.isFinite(+"20X")); //false
-console.log(Number.isFinite(23 / 0)); //false
+console.log(Math.PI * Number.parseFloat("10px") ** 2); // Area of a circle
 
-console.log(Number.isInteger(23));  //true
-console.log(Number.isInteger(23.0)); //true
-console.log(Number.isInteger(23 / 0)); //false
+console.log(Math.floor(Math.random() * 6) + 1); //random dice roll
+
+const randomInt = (min, max) => Math.floor(Math.random() * (max - min) + 1) + min; //random number between min and max
+console.log(randomInt(120, 130));
+
+console.log(Math.trunc(23.3334));
+
+console.log(Math.round(23.9));
+console.log(Math.round(23.3));
+console.log(Math.round(23.5 ));
+
+console.log(Math.ceil(23.9));
+console.log(Math.ceil(23.3));
+
+console.log(Math.floor(23.9));
+console.log(Math.floor(23.3));
+
+console.log('---------------');
+console.log((2.7).toFixed(0)); //will return string
+console.log((2.7).toFixed(3)); //control decimal digits
+console.log(+(2.3565).toFixed(2));
+
