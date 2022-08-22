@@ -86,7 +86,7 @@ const displayMovements = function (movements, sort = false) {
                   <div class="movements__type movements__type--${type}">${
       index + 1
     } ${type}</div>
-                  <div class="movements__value">${mov}€</div>
+                  <div class="movements__value">${mov.toFixed(2)}€</div>
             </div>
             `;
 
@@ -97,7 +97,7 @@ const displayMovements = function (movements, sort = false) {
 // set the sum of movements visually on Top
 const calcDisplayBalance = (acc) => {
   acc.balance = acc.movements.reduce((acc, mov) => acc + mov, 0);
-  labelBalance.textContent = `${acc.balance}€`;
+  labelBalance.textContent = `${acc.balance.toFixed(2)}€`;
 };
 
 // set the Sum of deposit, withdrawal & interest values visually
@@ -105,19 +105,19 @@ const calcDisplaySummary = (acc) => {
   const incomes = acc.movements
     .filter((mov) => mov > 0)
     .reduce((acc, mov) => acc + mov, 0);
-  labelSumIn.textContent = `${incomes}€`;
+  labelSumIn.textContent = `${incomes.toFixed(2)}€`;
 
   const out = acc.movements
     .filter((mov) => mov < 0)
     .reduce((acc, mov) => acc + mov, 0);
-  labelSumOut.textContent = `${Math.abs(out)}€`;
+  labelSumOut.textContent = `${Math.abs(out).toFixed(2)}€`;
 
   const interest = acc.movements
     .filter((mov) => mov > 0)
     .map((deposit) => (deposit * acc.interestRate) / 100)
     .filter((interest, i, arr) => interest >= 1)
     .reduce((acc, interest) => acc + interest, 0);
-  labelSumInterest.textContent = `${interest}€`;
+  labelSumInterest.textContent = `${interest.toFixed(2)}€`;
 };
 
 // make abbreviation of owners Full name (username)
@@ -196,7 +196,7 @@ btnTransfer.addEventListener("click", (e) => {
 btnLoan.addEventListener("click", (e) => {
   e.preventDefault();
 
-  const amount = +inputLoanAmount.value;
+  const amount = Math.floor(inputLoanAmount.value);
   if (
     amount > 0 &&
     currentAccount.movements.some((mov) => mov >= amount * 0.1)
@@ -241,37 +241,3 @@ btnSort.addEventListener("click", (e) => {
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURE
-
-console.log(Math.sqrt(25));
-console.log(25 ** (1 / 2));
-console.log(8 ** (1 / 3));
-
-console.log(Math.max(5, 8, 23, 11, 2));
-const numbers = [2, 34, 78, 2, 6, 3, 16, -5, 1, 7, 89, 43];
-console.log(Math.max(...numbers)); // find the maximum value in Array
-console.log(Math.min(...numbers)); // find the minimum value in Array
-
-console.log(Math.PI * Number.parseFloat("10px") ** 2); // Area of a circle
-
-console.log(Math.floor(Math.random() * 6) + 1); //random dice roll
-
-const randomInt = (min, max) => Math.floor(Math.random() * (max - min) + 1) + min; //random number between min and max
-console.log(randomInt(120, 130));
-
-console.log(Math.trunc(23.3334));
-
-console.log(Math.round(23.9));
-console.log(Math.round(23.3));
-console.log(Math.round(23.5 ));
-
-console.log(Math.ceil(23.9));
-console.log(Math.ceil(23.3));
-
-console.log(Math.floor(23.9));
-console.log(Math.floor(23.3));
-
-console.log('---------------');
-console.log((2.7).toFixed(0)); //will return string
-console.log((2.7).toFixed(3)); //control decimal digits
-console.log(+(2.3565).toFixed(2));
-
