@@ -241,3 +241,9 @@ btnSort.addEventListener("click", (e) => {
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURE
+
+console.log(287_460_000_000);
+console.log(28746e7);
+console.log(15_00);
+console.log(Number('230_000')); //NaN
+console.log(parseInt('230_000')); //230
