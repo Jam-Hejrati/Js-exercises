@@ -75,7 +75,7 @@ const inputClosePin = document.querySelector(".form__input--pin");
 ////////////////////////////////////////////
 // Functions
 
-const formatMovementDate = (date , locale) => {
+const formatMovementDate = (date, locale) => {
   const calcDaysPassed = (date1, date2) =>
     Math.round(Math.abs(date2 - date1) / (1000 * 60 * 60 * 24));
 
@@ -89,8 +89,14 @@ const formatMovementDate = (date , locale) => {
   // const month = `${date.getMonth() + 1}`.padStart(2, 0);
   // const year = date.getFullYear();
   // return `${day}/${month}/${year}`;
-  return new Intl.DateTimeFormat(locale).format(date)
+  return new Intl.DateTimeFormat(locale).format(date);
 };
+
+const formatCur = (value, locale, currency) =>
+  new Intl.NumberFormat(locale, {
+    style: "currency",
+    currency: currency,
+  }).format(value);
 
 // set data visually in the movement box
 const displayMovements = function (acc, sort = false) {
@@ -104,7 +110,9 @@ const displayMovements = function (acc, sort = false) {
     const type = mov > 0 ? "deposit" : "withdrawal";
 
     const date = new Date(acc.movementsDates[index]);
-    const displayDate = formatMovementDate(date , acc.locale);
+    const displayDate = formatMovementDate(date, acc.locale);
+
+    const formattedMov = formatCur(mov, acc.locale, acc.currency);
 
     const html = `
             <div class="movements__row">
@@ -112,7 +120,7 @@ const displayMovements = function (acc, sort = false) {
       index + 1
     } ${type}</div>
     <div class="movements__date">${displayDate}</div>
-                  <div class="movements__value">${mov.toFixed(2)}€</div>
+                  <div class="movements__value">${formattedMov}</div>
             </div>
             `;
 
@@ -123,7 +131,7 @@ const displayMovements = function (acc, sort = false) {
 // set the sum of movements visually on Top
 const calcDisplayBalance = (acc) => {
   acc.balance = acc.movements.reduce((acc, mov) => acc + mov, 0);
-  labelBalance.textContent = `${acc.balance.toFixed(2)}€`;
+  labelBalance.textContent = formatCur(acc.balance, acc.locale, acc.currency);
 };
 
 // set the Sum of deposit, withdrawal & interest values visually
@@ -131,19 +139,19 @@ const calcDisplaySummary = (acc) => {
   const incomes = acc.movements
     .filter((mov) => mov > 0)
     .reduce((acc, mov) => acc + mov, 0);
-  labelSumIn.textContent = `${incomes.toFixed(2)}€`;
+  labelSumIn.textContent = formatCur(incomes, acc.locale, acc.currency);
 
   const out = acc.movements
     .filter((mov) => mov < 0)
     .reduce((acc, mov) => acc + mov, 0);
-  labelSumOut.textContent = `${Math.abs(out).toFixed(2)}€`;
+  labelSumOut.textContent = formatCur(Math.abs(out), acc.locale, acc.currency);
 
   const interest = acc.movements
     .filter((mov) => mov > 0)
     .map((deposit) => (deposit * acc.interestRate) / 100)
     .filter((interest, i, arr) => interest >= 1)
     .reduce((acc, interest) => acc + interest, 0);
-  labelSumInterest.textContent = `${interest.toFixed(2)}€`;
+  labelSumInterest.textContent = formatCur(interest, acc.locale, acc.currency);
 };
 
 // make abbreviation of owners Full name (username)
@@ -200,7 +208,10 @@ btnLogin.addEventListener("click", (e) => {
       // weekday: "long",
     };
     // const local = navigator.language; // Will get the local from user's browser :)
-    labelDate.textContent = new Intl.DateTimeFormat(currentAccount.locale, options).format(now);
+    labelDate.textContent = new Intl.DateTimeFormat(
+      currentAccount.locale,
+      options
+    ).format(now);
     // labelDate.textContent = new Intl.DateTimeFormat('fa-IR' , options).format(now)
 
     // Clear input Fields
@@ -290,16 +301,3 @@ btnSort.addEventListener("click", (e) => {
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURE
-
-const num = 546723.23
-
-const options = {
-  style: 'currency',
-  // unit: 'mile-per-hour',
-  currency: 'EUR',
-  // useGrouping: false
-}
-
-console.log('US)' , new Intl.NumberFormat('en-US' , options).format(num));
-console.log('Germany)' , new Intl.NumberFormat('de-DE' , options).format(num));
-console.log('Iran)' , new Intl.NumberFormat('fa-IR' , options).format(num));
