@@ -75,7 +75,7 @@ const inputClosePin = document.querySelector(".form__input--pin");
 ////////////////////////////////////////////
 // Functions
 
-const formatMovementDate = (date) => {
+const formatMovementDate = (date , locale) => {
   const calcDaysPassed = (date1, date2) =>
     Math.round(Math.abs(date2 - date1) / (1000 * 60 * 60 * 24));
 
@@ -84,11 +84,12 @@ const formatMovementDate = (date) => {
   if (daysPassed === 0) return "Today";
   if (daysPassed === 1) return "Yesterday";
   if (daysPassed <= 7) return `${daysPassed} days ago`;
-  
-  const day = `${date.getDate()}`.padStart(2, 0);
-  const month = `${date.getMonth() + 1}`.padStart(2, 0);
-  const year = date.getFullYear();
-  return `${day}/${month}/${year}`;
+
+  // const day = `${date.getDate()}`.padStart(2, 0);
+  // const month = `${date.getMonth() + 1}`.padStart(2, 0);
+  // const year = date.getFullYear();
+  // return `${day}/${month}/${year}`;
+  return new Intl.DateTimeFormat(locale).format(date)
 };
 
 // set data visually in the movement box
@@ -103,7 +104,7 @@ const displayMovements = function (acc, sort = false) {
     const type = mov > 0 ? "deposit" : "withdrawal";
 
     const date = new Date(acc.movementsDates[index]);
-    const displayDate = formatMovementDate(date);
+    const displayDate = formatMovementDate(date , acc.locale);
 
     const html = `
             <div class="movements__row">
@@ -171,8 +172,8 @@ const updateUI = function (acc) {
 
 ///////////////////////////////////////////////
 // Event handlers
-
 let currentAccount;
+
 btnLogin.addEventListener("click", (e) => {
   //Prevent form from submitting
   e.preventDefault();
@@ -190,12 +191,17 @@ btnLogin.addEventListener("click", (e) => {
 
     // Create current date and time
     const now = new Date();
-    const day = `${now.getDate()}`.padStart(2, 0);
-    const month = `${now.getMonth() + 1}`.padStart(2, 0);
-    const year = now.getFullYear();
-    const hour = `${now.getHours()}`.padStart(2, 0);
-    const min = `${now.getMinutes()}`.padStart(2, 0);
-    labelDate.textContent = `${day}/${month}/${year}, ${hour}:${min}`;
+    const options = {
+      hour: "numeric",
+      minute: "numeric",
+      day: "numeric",
+      month: "numeric",
+      year: "numeric",
+      // weekday: "long",
+    };
+    // const local = navigator.language; // Will get the local from user's browser :)
+    labelDate.textContent = new Intl.DateTimeFormat(currentAccount.locale, options).format(now);
+    // labelDate.textContent = new Intl.DateTimeFormat('fa-IR' , options).format(now)
 
     // Clear input Fields
     inputLoginUsername.value = inputLoginPin.value = "";
@@ -284,5 +290,3 @@ btnSort.addEventListener("click", (e) => {
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURE
-
-
