@@ -290,3 +290,16 @@ btnSort.addEventListener("click", (e) => {
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURE
+
+const num = 546723.23
+
+const options = {
+  style: 'currency',
+  // unit: 'mile-per-hour',
+  currency: 'EUR',
+  // useGrouping: false
+}
+
+console.log('US)' , new Intl.NumberFormat('en-US' , options).format(num));
+console.log('Germany)' , new Intl.NumberFormat('de-DE' , options).format(num));
+console.log('Iran)' , new Intl.NumberFormat('fa-IR' , options).format(num));
