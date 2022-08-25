@@ -303,3 +303,12 @@ btnSort.addEventListener("click", (e) => {
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURE
+
+// setInterval() is like a setTimeout() but in an infinite loop way
+// Timer:
+setInterval(function(){
+  const sec = `${new Date().getSeconds()}`.padStart(2 , 0);
+  const min = `${new Date().getMinutes()}`.padStart(2 , 0);
+  const hour = `${new Date().getHours()}`.padStart(2 , 0);
+  console.log(`${hour}:${min}:${sec}`);
+} , 1000)
