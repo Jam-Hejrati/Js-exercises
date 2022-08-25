@@ -178,9 +178,37 @@ const updateUI = function (acc) {
   calcDisplaySummary(acc);
 }; // Just to make it globally
 
+const startLogOutTimer = function () {
+  const tick = function () {
+    const min = `${Math.trunc(time / 60)}`.padStart(2, 0);
+    const sec = `${time % 60}`.padStart(2, 0);
+
+    // In each call, print the remaining time to UI
+    labelTimer.textContent = `${min}:${sec}`;
+
+    // When 0 seconds, stop timer and logOut user
+    if (time === 0) {
+      clearInterval(timer);
+      labelWelcome.textContent = "Log in to get started";
+      containerApp.style.opacity = 0;
+    }
+    // Decrese 1s
+    time--;
+  };
+
+  // Set time to 5 minute
+  let time = 120;
+
+  // Call the timer every second
+  tick();
+  const timer = setInterval(tick, 1000);
+
+  return timer;
+};
+
 ///////////////////////////////////////////////
 // Event handlers
-let currentAccount;
+let currentAccount, timer;
 
 btnLogin.addEventListener("click", (e) => {
   //Prevent form from submitting
@@ -218,6 +246,10 @@ btnLogin.addEventListener("click", (e) => {
     inputLoginUsername.value = inputLoginPin.value = "";
     inputLoginPin.blur(); // lose the cursors :focus
 
+    // Timer
+    if (timer) clearInterval(timer);
+    timer = startLogOutTimer();
+
     // Update UI
     updateUI(currentAccount);
   }
@@ -247,6 +279,10 @@ btnTransfer.addEventListener("click", (e) => {
 
     // Update UI
     updateUI(currentAccount);
+
+    // Reset timer
+    clearInterval(timer);
+    timer = startLogOutTimer();
   }
 });
 
@@ -267,6 +303,10 @@ btnLoan.addEventListener("click", (e) => {
 
       // Update UI
       updateUI(currentAccount);
+
+      // Reset timer
+      clearInterval(timer);
+      timer = startLogOutTimer();
     }, 3000);
   }
 
@@ -303,12 +343,3 @@ btnSort.addEventListener("click", (e) => {
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURE
-
-// setInterval() is like a setTimeout() but in an infinite loop way
-// Timer:
-setInterval(function(){
-  const sec = `${new Date().getSeconds()}`.padStart(2 , 0);
-  const min = `${new Date().getMinutes()}`.padStart(2 , 0);
-  const hour = `${new Date().getHours()}`.padStart(2 , 0);
-  console.log(`${hour}:${min}:${sec}`);
-} , 1000)
