@@ -258,14 +258,16 @@ btnLoan.addEventListener("click", (e) => {
     amount > 0 &&
     currentAccount.movements.some((mov) => mov >= amount * 0.1)
   ) {
-    // Add movement
-    currentAccount.movements.push(amount);
+    setTimeout(function () {
+      // Add movement
+      currentAccount.movements.push(amount);
 
-    // Add loan date
-    currentAccount.movementsDates.push(new Date().toISOString());
+      // Add loan date
+      currentAccount.movementsDates.push(new Date().toISOString());
 
-    // Update UI
-    updateUI(currentAccount);
+      // Update UI
+      updateUI(currentAccount);
+    }, 3000);
   }
 
   inputLoanAmount.value = "";
@@ -301,18 +303,3 @@ btnSort.addEventListener("click", (e) => {
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURE
-
-const ingredients = ['sth-1' , 'sth-2']
-
-const sthFunc = setTimeout(
-  (ing1, ing2) => {
-    console.log(`its ${ing1} and ${ing2}`); // a callback func for the first arg of setTimeout()
-  },
-  3000, // the time after that callback function triggered in millisecond for second arg...
-  ...ingredients // callback functions arguments...
-);
-console.log("waiting...");
-
-if(ingredients.includes('sth-')){
-  clearTimeout(sthFunc) // cancel the setTimeout() timer
-}
