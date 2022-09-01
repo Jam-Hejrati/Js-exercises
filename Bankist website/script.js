@@ -159,28 +159,61 @@ allSection.forEach(function (section) {
 //////////////////////////////////////////////
 // Lazy loading images
 
-const imgTargets = document.querySelectorAll('img[data-src]')
+const imgTargets = document.querySelectorAll("img[data-src]");
 
-const loadImg = function(entries, observer){
-  const [entry] = entries
+const loadImg = function (entries, observer) {
+  const [entry] = entries;
 
-  if(!entry.isIntersecting) return;
+  if (!entry.isIntersecting) return;
 
   // Replace src with data-src
-  entry.target.src = entry.target.dataset.src
-  entry.target.addEventListener('load' , function(){
-    entry.target.classList.remove('lazy-img')
-  })
+  entry.target.src = entry.target.dataset.src;
+  entry.target.addEventListener("load", function () {
+    entry.target.classList.remove("lazy-img");
+  });
 
-  observer.unobserve(entry.target)
-}
+  observer.unobserve(entry.target);
+};
 
 const imgObserver = new IntersectionObserver(loadImg, {
-  root:null,
-  threshold:0,
-  rootMargin: '-100px'
-})
+  root: null,
+  threshold: 0,
+  rootMargin: "-100px",
+});
 
-imgTargets.forEach(img => imgObserver.observe(img))
+imgTargets.forEach((img) => imgObserver.observe(img));
 
 ////////////////////////////////////////////
+// Slider
+
+const slides = document.querySelectorAll(".slide");
+const btnLeft = document.querySelector(".slider__btn--left");
+const btnRight = document.querySelector(".slider__btn--right");
+
+let currentSlide = 0;
+const maxSlide = slides.length;
+
+const goToSlide = (slide) => {
+  slides.forEach(
+    (slide, index) =>
+      (slide.style.transform = `translateX(${100 * (index - currentSlide)}%)`)
+  );
+};
+
+goToSlide(0);
+
+const nextSlide = () => {
+  if (currentSlide === maxSlide - 1) currentSlide = 0;
+  else currentSlide++;
+
+  goToSlide(currentSlide);
+};
+
+const prevSlide = () => {
+  if (currentSlide === 0) currentSlide = maxSlide - 1;
+  else currentSlide--;
+  goToSlide(currentSlide);
+};
+
+btnRight.addEventListener("click", nextSlide);
+btnLeft.addEventListener("click", prevSlide);
