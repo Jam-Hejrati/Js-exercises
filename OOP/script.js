@@ -4,19 +4,21 @@ const Person = function(firstName , birthYear){
     // Instance properties
     this.firstName = firstName
     this.birthYear = birthYear
-
-    // Bad practice for make method in constructor function
-    /*this.calcAge = function(){
-        console.log(2022 - this.birthYear);
-    }*/
 }
 
 const jam = new Person('Jam' , 2000)
-const jonas = new Person('Jonas' , 1991)
-const jack = new Person('Jack' , 1975)
-
 console.table(jam);
-console.table(jonas);
-console.table(jack);
-console.log(jam instanceof Person);
 
+// Prototypes
+// better way to make a method for function constructor
+Person.prototype.calcAge = function() {
+    console.log(2022 - this.birthYear);
+}
+jam.calcAge()
+
+Person.prototype.species = 'Homo Sapiens'
+console.log(jam);
+console.log(jam.hasOwnProperty('firstName'));
+console.log(jam.hasOwnProperty('species'));
+console.log(Object.hasOwn(jam , 'firstName'));
+console.log(Object.hasOwn(jam , 'species'));
