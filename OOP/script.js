@@ -1,33 +1,20 @@
 "use strict";
+const Car = function(make , speed){
+    this.make = make
+    this.currentSpeed = speed
+}
+Car.prototype.accelerate = function() {
+    console.log(this.currentSpeed += 10);
+}
 
-const Person = function (firstName, birthYear) {
-  // Instance properties
-  this.firstName = firstName;
-  this.birthYear = birthYear;
-};
+Car.prototype.brake = function() {
+    console.log(this.currentSpeed -= 5);
+}
 
-const jam = new Person("Jam", 2000);
-console.table(jam);
+const car1 = new Car('BMW' , 120)
+const car2 = new Car('Mercedes' , 95)
 
-// Prototypes
-// better way to make a method for function constructor
-Person.prototype.calcAge = function () {
-  console.log(2022 - this.birthYear);
-};
-jam.calcAge();
-
-Person.prototype.species = "Homo Sapiens";
-console.log(jam);
-console.log(jam.__proto__);
-console.log(jam.__proto__.__proto__);
-console.dir(Person.prototype.constructor);
-
-const arr = [1, 9, 4, 2, 3, 4, 5, 6, 4, 7, 3, 3];
-console.log(arr.__proto__);
-console.log(arr.__proto__ === Array.prototype);
-
-// Make a new method for arrays (bad practice)
-Array.prototype.uniqe = function () {
-  return [...new Set(this)];
-};
-console.log(arr.uniqe());
+car1.accelerate() // 130
+car1.brake() // 125
+car2.accelerate() // 105
+car2.brake() // 100
