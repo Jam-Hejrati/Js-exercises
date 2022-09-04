@@ -1,55 +1,37 @@
 "use strict";
 
+const Person = function (firstName, birthYear) {
+  this.firstName = firstName;
+  this.birthYear = birthYear;
+};
+
+const jam = new Person("Jam", 2000);
+
+Person.hey = function () {
+  console.log("Hey there...");
+  console.log(this);
+};
+
+Person.hey(); // Hey there...
+// jam.hey() // Error
+
 class PersonCl {
-  constructor(fullName, birthYear) {
-    this.fullName = fullName;
+  constructor(firstName, birthYear) {
+    this.firstName = firstName;
     this.birthYear = birthYear;
   }
 
   calcAge() {
-    console.log(2022 - this.birthYear);
+    console.log(2022 - thisd.birthYear);
   }
 
-  greet() {
-    console.log(`Hey ${this.firstName}`);
-  }
-
-  get age() {
-    return 2022 - this.birthYear;
-  }
-
-  set fullName(name) {
-    if (name.includes(" ")) {
-      this._fullName = name;
-    } else {
-      alert(`${name} is not a full name!`);
-    }
-  }
-
-  get fullName(){
-    return this._fullName
+  // Static Method
+  static hey() {
+    console.log("Hey there...");
+    console.log(this);
   }
 }
+const jam2 = new PersonCl('Jam' , 2000)
 
-const jam = new PersonCl("Jam Hejrati", 2000);
-console.log(jam.age);
-console.log(jam);
-
-
-///////////////////////
-/*const account = {
-  owner: "Jam",
-  movements: [200, 530, 120, 300],
-
-  get latest(){
-    return this.movements.slice(-1).pop()
-  },
-
-  set latest(mov){
-    this.movements.push(mov)
-  }
-};
-
-console.log(account.latest);
-account.latest = 50
-console.log(account.movements);*/
+PersonCl.hey() // Hey there...
+// jam2.hey() // Error
