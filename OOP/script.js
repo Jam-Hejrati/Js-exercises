@@ -1,20 +1,20 @@
 "use strict";
-const Car = function(make , speed){
-    this.make = make
-    this.currentSpeed = speed
-}
-Car.prototype.accelerate = function() {
-    console.log(this.currentSpeed += 10);
+
+// Class Expression
+// const PersonCl = class {}
+
+// Class Decleration
+class PersonCl {
+    constructor(firstName , birthYear){
+        this.firstName = firstName
+        this.birthYear = birthYear
+    }
+
+    calcAge(){
+        console.log(2022 - this.birthYear);
+    }
 }
 
-Car.prototype.brake = function() {
-    console.log(this.currentSpeed -= 5);
-}
-
-const car1 = new Car('BMW' , 120)
-const car2 = new Car('Mercedes' , 95)
-
-car1.accelerate() // 130
-car1.brake() // 125
-car2.accelerate() // 105
-car2.brake() // 100
+const Jam = new PersonCl('Jam' , 2000)
+console.log(Jam);
+Jam.calcAge()
