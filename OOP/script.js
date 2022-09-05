@@ -1,33 +1,30 @@
 "use strict";
 
-class Car {
-  constructor(make, speed) {
-    this.make = make;
-    this.speed = speed;
-  }
+const Person = function (firstName, birthYear) {
+  this.firstName = firstName;
+  this.birthYear = birthYear;
+};
 
-  get speedUS() {
-    return this.speed / 1.6;
-  }
+Person.prototype.calcAge = function () {
+  console.log(2022 - this.birthYear);
+};
 
-  set speedUS(speed) {
-    this.speed = speed * 1.6;
-  }
+const Student = function (firstName, birthYear, course) {
+  Person.call(this, firstName, birthYear); // Inheritance
+  this.course = course;
+};
 
-  accelerate() {
-    console.log((this.speed += 10));
-  }
+// Linking prototypes
+Student.prototype = Object.create(Person.prototype)
 
-  brake() {
-    console.log((this.speed -= 5));
-  }
-}
+Student.prototype.introduce = function () {
+  console.log(`My name is ${this.firstName} and I study ${this.course}`);
+};
 
-const Car1 = new Car("Ford", 120);
-console.log(Car1.speedUS);
-Car1.accelerate()
-Car1.accelerate()
-Car1.brake()
-console.log(Car1.speedUS);
-Car1.speed = 50
-console.log(Car1);
+const mike = new Student("Mike", 2000, "Computer Science");
+console.log(mike);
+mike.introduce();
+mike.calcAge() // Because of prototypes Linking
+
+console.log(mike.__proto__);
+console.log(mike.__proto__.__proto__);
