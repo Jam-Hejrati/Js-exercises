@@ -1,37 +1,31 @@
 "use strict";
 
-const Person = function (firstName, birthYear) {
-  this.firstName = firstName;
-  this.birthYear = birthYear;
-};
-
-const jam = new Person("Jam", 2000);
-
-Person.hey = function () {
-  console.log("Hey there...");
-  console.log(this);
-};
-
-Person.hey(); // Hey there...
-// jam.hey() // Error
-
-class PersonCl {
-  constructor(firstName, birthYear) {
-    this.firstName = firstName;
-    this.birthYear = birthYear;
-  }
-
+const Person = {
   calcAge() {
     console.log(2022 - this.birthYear);
-  }
+  },
+  printName() {
+    console.log(`Hey ${this.firstName}`);
+  },
 
-  // Static Method
-  static hey() {
-    console.log("Hey there...");
-    console.log(this);
-  }
-}
-const jam2 = new PersonCl('Jam' , 2000)
+  init(firstName, birthYear) {
+    this.firstName = firstName;
+    this.birthYear = birthYear;
+  },
+};
 
-PersonCl.hey() // Hey there...
-// jam2.hey() // Error
+const jam = Object.create(Person);
+console.log(jam);
+jam.name = "Jam";
+jam.birthYear = 2000;
+console.log(jam);
+jam.calcAge();
+jam.printName();
+
+console.log(jam.__proto__);
+console.log(jam.__proto__ === Person); // True
+
+const sara = Object.create(Person);
+sara.init("Sara", 2002);
+sara.calcAge();
+sara.printName();
