@@ -1,31 +1,33 @@
 "use strict";
 
-const Person = {
-  calcAge() {
-    console.log(2022 - this.birthYear);
-  },
-  printName() {
-    console.log(`Hey ${this.firstName}`);
-  },
+class Car {
+  constructor(make, speed) {
+    this.make = make;
+    this.speed = speed;
+  }
 
-  init(firstName, birthYear) {
-    this.firstName = firstName;
-    this.birthYear = birthYear;
-  },
-};
+  get speedUS() {
+    return this.speed / 1.6;
+  }
 
-const jam = Object.create(Person);
-console.log(jam);
-jam.name = "Jam";
-jam.birthYear = 2000;
-console.log(jam);
-jam.calcAge();
-jam.printName();
+  set speedUS(speed) {
+    this.speed = speed * 1.6;
+  }
 
-console.log(jam.__proto__);
-console.log(jam.__proto__ === Person); // True
+  accelerate() {
+    console.log((this.speed += 10));
+  }
 
-const sara = Object.create(Person);
-sara.init("Sara", 2002);
-sara.calcAge();
-sara.printName();
+  brake() {
+    console.log((this.speed -= 5));
+  }
+}
+
+const Car1 = new Car("Ford", 120);
+console.log(Car1.speedUS);
+Car1.accelerate()
+Car1.accelerate()
+Car1.brake()
+console.log(Car1.speedUS);
+Car1.speed = 50
+console.log(Car1);
