@@ -22,7 +22,7 @@ class PersonCl {
   }
 
   calcAge() {
-    console.log(2022 - thisd.birthYear);
+    console.log(2022 - this.birthYear);
   }
 
   // Static Method
