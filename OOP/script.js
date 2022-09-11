@@ -1,55 +1,29 @@
-"use strict";
+'use strict'
 
-class PersonCl {
-  constructor(fullName, birthYear) {
-    this.fullName = fullName;
-    this.birthYear = birthYear;
-  }
-
-  calcAge() {
-    console.log(2022 - this.birthYear);
-  }
-
-  greet() {
-    console.log(`Hey ${this.firstName}`);
-  }
-
-  get age() {
-    return 2022 - this.birthYear;
-  }
-
-  set fullName(name) {
-    if (name.includes(" ")) {
-      this._fullName = name;
-    } else {
-      alert(`${name} is not a full name!`);
-    }
-  }
-
-  get fullName(){
-    return this._fullName
-  }
-
-  static hey(){
-    console.log('Hey there');
-  }
-}
-class StudentCl extends PersonCl {
-  constructor(fullName , birthYear , course){
-    //Always need to happen first!
-    super(fullName , birthYear)
-    this.course = course
-  }
-
-  introduce(){
-    console.log(`My name is ${this.fullName} and I study ${this.course}`);
-  }
-
+const PersonProto = {
   calcAge(){
-    console.log(`I'm ${this.age} years old`);
-  }
+    console.log(2022 - this.birthYear);
+  },
+
+  init(firstName , birthYear){
+    this.firstName = firstName
+    this.birthYear = birthYear
+  },
 }
 
-const sara = new StudentCl('Sara Jones' , 2008 , 'Computer Engineering')
-sara.introduce()
-sara.calcAge()
+const jam = Object.create(PersonProto)
+
+const StudentProto = Object.create(PersonProto)
+StudentProto.init = function(firstName , birthYear, course){
+  PersonProto.init.call(this , firstName , birthYear)
+  this.course = course
+}
+
+StudentProto.introduce = function(){
+  console.log(`My name is ${this.firstName} and I study ${this.course}`);
+}
+
+const jay = Object.create(StudentProto)
+jay.init('Jay' , 2003 , "Computer Engineering")
+jay.introduce()
+jay.calcAge()
