@@ -1,30 +1,55 @@
 "use strict";
 
-const Person = function (firstName, birthYear) {
-  this.firstName = firstName;
-  this.birthYear = birthYear;
-};
+class PersonCl {
+  constructor(fullName, birthYear) {
+    this.fullName = fullName;
+    this.birthYear = birthYear;
+  }
 
-Person.prototype.calcAge = function () {
-  console.log(2022 - this.birthYear);
-};
+  calcAge() {
+    console.log(2022 - this.birthYear);
+  }
 
-const Student = function (firstName, birthYear, course) {
-  Person.call(this, firstName, birthYear); // Inheritance
-  this.course = course;
-};
+  greet() {
+    console.log(`Hey ${this.firstName}`);
+  }
 
-// Linking prototypes
-Student.prototype = Object.create(Person.prototype)
+  get age() {
+    return 2022 - this.birthYear;
+  }
 
-Student.prototype.introduce = function () {
-  console.log(`My name is ${this.firstName} and I study ${this.course}`);
-};
+  set fullName(name) {
+    if (name.includes(" ")) {
+      this._fullName = name;
+    } else {
+      alert(`${name} is not a full name!`);
+    }
+  }
 
-const mike = new Student("Mike", 2000, "Computer Science");
-console.log(mike);
-mike.introduce();
-mike.calcAge() // Because of prototypes Linking
+  get fullName(){
+    return this._fullName
+  }
 
-console.log(mike.__proto__);
-console.log(mike.__proto__.__proto__);
+  static hey(){
+    console.log('Hey there');
+  }
+}
+class StudentCl extends PersonCl {
+  constructor(fullName , birthYear , course){
+    //Always need to happen first!
+    super(fullName , birthYear)
+    this.course = course
+  }
+
+  introduce(){
+    console.log(`My name is ${this.fullName} and I study ${this.course}`);
+  }
+
+  calcAge(){
+    console.log(`I'm ${this.age} years old`);
+  }
+}
+
+const sara = new StudentCl('Sara Jones' , 2008 , 'Computer Engineering')
+sara.introduce()
+sara.calcAge()
