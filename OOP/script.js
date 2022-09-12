@@ -26,7 +26,7 @@ class Account {
     this.deposit(-val);
   }
 
-  _approveLoan(val){
+  approveLoan(val){
     return true;
   }
 
