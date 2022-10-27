@@ -38,7 +38,7 @@ const getCountryData = function (country) {
 
 getCountryData('Iran')*/
 ////////////////////////////////////////////
-
+/*
 const renderCountry = function (data , className ='') {
   const html = `
     <article class="country ${className}">
@@ -90,4 +90,9 @@ const getCountryAndNeighbour = function (country) {
 
 // getCountryAndNeighbour("Iran");
 // getCountryAndNeighbour('portugal')
-getCountryAndNeighbour('usa')
+getCountryAndNeighbour('usa')*/
+
+const req = new XMLHttpRequest();
+request.open("GET", `https://restcountries.com/v3.1/name/${country}`);
+request.send();
+
