@@ -53,7 +53,6 @@ const renderCountry = function (data, className = "") {
         </article>`;
 
   countriesContainer.insertAdjacentHTML("beforeend", html);
-  countriesContainer.style.opacity = 1;
 };
 /*
 const getCountryAndNeighbour = function (country) {
@@ -95,7 +94,10 @@ getCountryAndNeighbour('usa')*/
 const getCountryData = function (country) {
   // Country 1
   fetch(`https://restcountries.com/v3.1/name/${country}`)
-    .then((response) => response.json())
+    .then(
+      (response) => response.json(),
+      (err) => alert(err)
+    )
     .then((data) => {
       renderCountry(data[0]);
       const neighbour = data[0].borders[0];
@@ -106,7 +108,14 @@ const getCountryData = function (country) {
       return fetch(`https://restcountries.com/v3.1/alpha/${neighbour}`);
     })
     .then((response) => response.json())
-    .then((data) => renderCountry(data[0], "neighbour"));
+    .then((data) => renderCountry(data[0], "neighbour"))
+    .catch((err) => alert(err))
+    .finally(() => {
+      countriesContainer.style.opacity = 1;
+    }); // Not matter promis failed or not , this will always happen after all
 };
 
-getCountryData("usa");
+btn.addEventListener("click", function () {
+  getCountryData("usa");
+  // getCountryData("sfrdsghteg") will alert the error 
+});
