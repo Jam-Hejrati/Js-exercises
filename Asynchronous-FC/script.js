@@ -1,14 +1,19 @@
 "use strict"
 
 // Promises
-/*fetch("https://jsonplaceholder.typicode.com/todos/1").then(function (response) {
-    return response.json()
-}).then(function (data) {
-    console.table(data)
-})*/
+fetch("https://jsonplaceholder.typicode/todos/1")
+    .then(function (response) {
+            return response.json()
+        },
+        function (err) {
+            console.log("Error!")
+        })
+    .then(function (data) {
+        console.table(data)
+    })
 
 // Custom Promises
-const myPromise = new Promise((resolve , reject ) => {
+/*const myPromise = new Promise((resolve , reject ) => {
     // pending - resolve - reject
     setTimeout(function(){
         resolve('It woreked.')
@@ -16,4 +21,4 @@ const myPromise = new Promise((resolve , reject ) => {
 })
 myPromise.then(function(data){
     console.log(data)
-})
+})*/
