@@ -3,11 +3,11 @@
 // Promises
 fetch("https://jsonplaceholder.typicode/todos/1")
     .then(function (response) {
-            return response.json()
-        },
-        function (err) {
-            console.log("Error!")
-        })
+        return response.json()
+    })
+    .catch(err => {
+        console.log(err)
+    })
     .then(function (data) {
         console.table(data)
     })
