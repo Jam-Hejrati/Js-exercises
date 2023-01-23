@@ -26,6 +26,7 @@ button{
     border-radius: 6px;
     cursor: pointer;
     font-weight: 600;
+    font-size: 1rem;
 }
 
 button:hover{
@@ -62,3 +63,7 @@ input{
     border-radius: 6px;
 }
 
+.buttons{
+    display: flex;
+    gap: 20px;
+}

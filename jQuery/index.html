@@ -14,7 +14,11 @@
   <body>
     <div class="first-section">
       <p class="text" title="this is <p>tag">this should be red</p>
-      <button>Push me</button>
+      <div class="buttons">
+        <button>Hide</button>
+        <button>Show</button>
+        <button>Toggle</button>
+      </div>
     </div>
     <ul class="list">
       <li>text1</li>
@@ -27,14 +31,22 @@
       <input type="text" />
     </div>
     <div class="third-section">
-      <input type="text">
+      <input type="text" />
     </div>
     <script>
       $(document).ready(function () {
         $(".text").text("Hello World!");
 
-        $("button").click(function () {
+        $(".buttons button:nth-child(1)").click(function () {
           $(".text").hide();
+        });
+
+        $(".buttons button:nth-child(2)").click(function () {
+          $(".text").show();
+        });
+
+        $(".buttons button:nth-child(3)").click(function () {
+          $(".text").toggle(500); // 500 milliseconds
         });
 
         $("li").each(function (index) {
@@ -53,16 +65,18 @@
         });
 
         $(".third-section input").on({
-          mouseenter: function () { 
-           $(this).css('background-color' , 'aqua')
+          mouseenter: function () {
+            $(this).css("background-color", "aqua");
           },
           mouseleave: function () {
-            $(this).css('background-color' , 'lightgray')
+            $(this).css("background-color", "lightgray");
           },
-          click: function(){
-            $(this).css('background-color' , 'red')
-          }
-        })
+          click: function () {
+            $(this).css("background-color", "red");
+          },
+        });
+
+        
 
       }); // end of jq
     </script>
