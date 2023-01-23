@@ -26,6 +26,9 @@
     <div class="second-section">
       <input type="text" />
     </div>
+    <div class="third-section">
+      <input type="text">
+    </div>
     <script>
       $(document).ready(function () {
         $(".text").text("Hello World!");
@@ -42,13 +45,26 @@
 
         $("p").removeAttr("title");
 
-        $("input").focus(function () {
+        $(".second-section input").focus(function () {
           $(this).css("background-color", "#1098ad");
           $(this).mouseleave(function () {
             $(this).css("background-color", "transparent");
           });
         });
-      });
+
+        $(".third-section input").on({
+          mouseenter: function () { 
+           $(this).css('background-color' , 'aqua')
+          },
+          mouseleave: function () {
+            $(this).css('background-color' , 'lightgray')
+          },
+          click: function(){
+            $(this).css('background-color' , 'red')
+          }
+        })
+
+      }); // end of jq
     </script>
   </body>
 </html>
