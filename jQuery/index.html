@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>jquery exercise</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <div class="first-section">
+      <p class="text" title="this is <p>tag">this should be red</p>
+      <button>Push me</button>
+    </div>
+    <ul class="list">
+      <li>text1</li>
+      <li>text2</li>
+      <li>text3</li>
+      <li>text4</li>
+      <li>text5</li>
+    </ul>
+    <div class="second-section">
+      <input type="text" />
+    </div>
+    <script>
+      $(document).ready(function () {
+        $(".text").text("Hello World!");
+
+        $("button").click(function () {
+          $(".text").hide();
+        });
+
+        $("li").each(function (index) {
+          console.log(index + 1 + ": " + $(this).text());
+        });
+
+        $("button").attr("title", "click me");
+
+        $("p").removeAttr("title");
+
+        $("input").focus(function () {
+          $(this).css("background-color", "#1098ad");
+          $(this).mouseleave(function () {
+            $(this).css("background-color", "transparent");
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
