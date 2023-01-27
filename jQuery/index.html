@@ -10,14 +10,21 @@
     <title>jquery exercise</title>
     <link rel="stylesheet" href="style.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+    <script src="./script.js" defer></script>
   </head>
-  <body>
+  <body class="container">
     <div class="first-section">
       <p class="text" title="this is <p>tag">this should be red</p>
       <div class="buttons">
-        <button>Hide</button>
-        <button>Show</button>
-        <button>Toggle</button>
+        <button class="rounded-2">Hide</button>
+        <button class="rounded-2">Show</button>
+        <button class="rounded-2">Toggle</button>
       </div>
     </div>
     <ul class="list">
@@ -33,52 +40,21 @@
     <div class="third-section">
       <input type="text" />
     </div>
-    <script>
-      $(document).ready(function () {
-        $(".text").text("Hello World!");
+    <div class="d-grid col-12 fourth-section">
+      <div class="btn-group p-4">
+        <button class="btn btn-primary btn-fadein">Fade in</button>
+        <button class="btn btn-primary btn-fadeout">Fade out</button>
+        <button class="btn btn-primary btn-fadetoggle">Fade toggle</button>
+      </div>
+      <div class="font-monospace text-xl-center m-4 mt-0 p-4 bg-warning rounded-1 text-section">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quae neque quasi sint adipisci. Molestias corrupti consectetur iure maxime accusantium repudiandae eius obcaecati. Maxime velit voluptates incidunt accusamus commodi in!
+      </div>
+    </div>
 
-        $(".buttons button:nth-child(1)").click(function () {
-          $(".text").hide();
-        });
-
-        $(".buttons button:nth-child(2)").click(function () {
-          $(".text").show();
-        });
-
-        $(".buttons button:nth-child(3)").click(function () {
-          $(".text").toggle(500); // 500 milliseconds
-        });
-
-        $("li").each(function (index) {
-          console.log(index + 1 + ": " + $(this).text());
-        });
-
-        $("button").attr("title", "click me");
-
-        $("p").removeAttr("title");
-
-        $(".second-section input").focus(function () {
-          $(this).css("background-color", "#1098ad");
-          $(this).mouseleave(function () {
-            $(this).css("background-color", "transparent");
-          });
-        });
-
-        $(".third-section input").on({
-          mouseenter: function () {
-            $(this).css("background-color", "aqua");
-          },
-          mouseleave: function () {
-            $(this).css("background-color", "lightgray");
-          },
-          click: function () {
-            $(this).css("background-color", "red");
-          },
-        });
-
-        
-
-      }); // end of jq
-    </script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>

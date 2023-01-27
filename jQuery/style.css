@@ -23,7 +23,6 @@ button{
     border: none;
     padding: 6px 12px;
     background-color: #6464f0;
-    border-radius: 6px;
     cursor: pointer;
     font-weight: 600;
     font-size: 1rem;
@@ -66,4 +65,10 @@ input{
 .buttons{
     display: flex;
     gap: 20px;
+}
+
+.fourth-section{
+    margin: 20px 0;
+    padding: 20px 0;
+    background-color: aliceblue;
 }
