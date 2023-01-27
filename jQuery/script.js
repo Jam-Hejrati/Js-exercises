@@ -49,5 +49,17 @@ $(document).ready(function () {
   $(".btn-fadetoggle").click(function () {
     $(".text-section").fadeToggle(1000); //milisecond
   });
+  
+  $(".btn-slideup").click(function () {
+    $(".slide-text-section").slideUp();
+  });
+  $(".btn-slidedown").click(function () {
+    $(".slide-text-section").slideDown('slow');
+  });
+  $(".btn-slidetoggle").click(function () {
+    $(".slide-text-section").slideToggle(1000); //milisecond
+  });
+
+  
 
 }); // end of jq
