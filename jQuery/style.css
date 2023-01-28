@@ -72,3 +72,19 @@ input{
     padding: 20px 0;
     background-color: aliceblue;
 }
+
+.animate-section{
+    margin: 20px 0;
+    height: 200px;
+    background-color: aliceblue;
+    display: block;
+}
+
+.animate-section > span{
+    position: absolute;
+    background-color: #5454e5;
+    color: white;
+    font-size: 1rem;
+    padding: 4px;
+    border-radius: 4px;
+}

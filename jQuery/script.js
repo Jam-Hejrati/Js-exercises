@@ -44,22 +44,28 @@ $(document).ready(function () {
     $(".text-section").fadeIn();
   });
   $(".btn-fadeout").click(function () {
-    $(".text-section").fadeOut('slow');
+    $(".text-section").fadeOut("slow");
   });
   $(".btn-fadetoggle").click(function () {
     $(".text-section").fadeToggle(1000); //milisecond
   });
-  
+
   $(".btn-slideup").click(function () {
     $(".slide-text-section").slideUp();
   });
   $(".btn-slidedown").click(function () {
-    $(".slide-text-section").slideDown('slow');
+    $(".slide-text-section").slideDown("slow");
   });
   $(".btn-slidetoggle").click(function () {
     $(".slide-text-section").slideToggle(1000); //milisecond
   });
 
-  
-
+  $(".animate-btn").click(function () {
+    $('.animate-section > span').animate({
+      width: '+=150px',
+      fontSize: '2rem',
+      left: '350px'
+    })
+    $('.animate-section > span').animate({ width: 'toggle' } , 'fast')
+  });
 }); // end of jq
