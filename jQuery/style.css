@@ -78,10 +78,16 @@ input{
     height: 200px;
     background-color: aliceblue;
     display: block;
+    position: relative;
+}
+
+.animate-section > button{
+    position: absolute;
+    inset: auto auto 0 0;
+    color: white;
 }
 
 .animate-section > span{
-    position: absolute;
     background-color: #5454e5;
     color: white;
     font-size: 1rem;
