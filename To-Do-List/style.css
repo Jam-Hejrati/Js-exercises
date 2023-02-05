@@ -12,12 +12,14 @@ body {
   background: #717377;
   position: relative;
   overflow: hidden;
+  display: flex;
 }
 
 .task-text {
   color: #fff;
   font-size: 1.2rem;
   margin-left: 15px;
+  margin-right: auto;
 }
 
 .task:before {

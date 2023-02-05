@@ -73,4 +73,5 @@ $(function () {
     $(".html-transform").html("<span class='badge bg-secondary'>transformed</span>")
   })
 
+  
 }); // end of jq

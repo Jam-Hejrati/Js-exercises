@@ -6,16 +6,27 @@ $(function () {
   })
 
   // task template
-  const taskAdder = (text) => {
-    const template = `<li class="task p-2 m-2 rounded list-group-item text-white col-10"><span class="task-text">${text}</span></li>`
+  const taskHandler = (text) => {
+    const template = `<li class="task p-2 m-2 rounded list-group-item text-white col-10">
+      <span class="task-text my-auto">${text}</span>
+      <button class="btn btn-warning m-1 editBtn text-white" title="Edit"><i class="fa fa-edit fs-5"></i></button>
+      <button class="btn btn-danger m-1 deleteBtn text-white" title="Delete"><i class="fa fa-trash fs-5"></i></button>
+    </li>`
     $(".task-box").prepend(template)
+
+    // task's delete button
+    $(".task .deleteBtn").on('click' , event => {
+      const currentElement = event.currentTarget.parentNode;
+      currentElement.remove()
+    })
   }
 
   // submit the task
   $(".submit-btn").on('click' , () => {
     let taskText = $(".task-input").val()
     if (!taskText) return
-    taskAdder(taskText)
+    taskHandler(taskText)
     $(".task-input").val('').trigger('focus')
   })
+
 })
