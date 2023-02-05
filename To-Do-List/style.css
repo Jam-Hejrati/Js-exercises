@@ -1,0 +1,32 @@
+body {
+  background: #292b2d;
+}
+
+.task-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.task {
+  background: #717377;
+  position: relative;
+  overflow: hidden;
+}
+
+.task-text {
+  color: #fff;
+  font-size: 1.2rem;
+  margin-left: 15px;
+}
+
+.task:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 8px;
+  background: linear-gradient(#fd33a1 0%, #47c8fd 100%);
+  margin-right: 10px;
+}
