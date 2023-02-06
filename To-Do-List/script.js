@@ -19,6 +19,14 @@ $(function () {
       const currentElement = event.currentTarget.parentNode;
       currentElement.remove()
     })
+
+    // task's edit button
+    $(".task .editBtn").on('click' , event => {
+      const currentElement = event.currentTarget.parentNode;
+      let currentTaskText = $(currentElement).children(".task-text").text();
+      $(".task-input").val(currentTaskText).trigger('focus')
+      currentElement.remove()
+    })
   }
 
   // submit the task
