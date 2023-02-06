@@ -30,11 +30,21 @@ $(function () {
   }
 
   // submit the task
-  $(".submit-btn").on('click' , () => {
+  const submitHandler = () => {
     let taskText = $(".task-input").val()
     if (!taskText) return
     taskHandler(taskText)
     $(".task-input").val('').trigger('focus')
+  }
+
+  $(".submit-btn").on('click' , () => {
+    submitHandler();
+  })
+
+  $(document).on('keypress' , e => {
+    if (e?.originalEvent.key === "Enter") {
+      submitHandler();
+    }
   })
 
 })
