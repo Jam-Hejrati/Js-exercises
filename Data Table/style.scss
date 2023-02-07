@@ -1,0 +1,40 @@
+$thead-bg-color: #d8dce3;
+$tr-bg-color: #F9FAFC;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  table {
+    border-collapse: collapse;
+    border-radius: 10px !important;
+
+    thead{
+      background: $thead-bg-color;
+      border: none;
+      margin: 0;
+    }
+
+    thead, tr:not(:last-child) {
+      text-align: left;
+    }
+
+    tr:nth-child(even){
+      background: $tr-bg-color;
+    }
+
+    td, th {
+      padding: 14px 36px;
+    }
+  }
+}

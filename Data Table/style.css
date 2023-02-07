@@ -1,0 +1,34 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+body table {
+  border-collapse: collapse;
+  border-radius: 10px !important;
+}
+body table thead {
+  background: #d8dce3;
+  border: none;
+  margin: 0;
+}
+body table thead, body table tr:not(:last-child) {
+  text-align: left;
+}
+body table tr:nth-child(even) {
+  background: #F9FAFC;
+}
+body table td, body table th {
+  padding: 14px 36px;
+}
+
+/*# sourceMappingURL=style.css.map */
